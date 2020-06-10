@@ -22,6 +22,10 @@ namespace ACM.BL
                 prod.ProductionDescription = "Bathing Soap";
             }
 
+            Object myobj = new Object();
+            Console.WriteLine($"Object: {myobj.ToString()}");
+            Console.WriteLine($"Product: {prod.ToString()}");
+
             return prod;
         }
 
@@ -31,7 +35,27 @@ namespace ACM.BL
         /// <returns></returns>
         public bool Save(Product product)
         {
-            return true;
+            var success = true;
+
+            if (product.HasChanged)
+            {
+                if (product.IsValid)
+                {
+                    if (product.IsNew)
+                    {
+                        // Call an Insert Stored Procedure
+                    }
+                    else
+                    {
+                        // Call Update Stored Procedure
+                    }
+                }
+                else
+                {
+                    success = false;
+                }
+            }
+            return success;
         }
     }
 }

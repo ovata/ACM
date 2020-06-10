@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace ACM.BL
 {
-    public class Customer
+    public class Customer : Base
     {
 
         public Customer() : this(0)
@@ -55,11 +55,13 @@ namespace ACM.BL
             }
         }
 
+        public override string ToString() => FullName;
+
         /// <summary>
         /// validates the customer data
         /// </summary>
         /// <returns></returns>
-        public bool Validate()
+        public override bool Validate()
         {
             var isValid = true;
             if (string.IsNullOrWhiteSpace(LastName)) isValid = false;
